@@ -28,4 +28,4 @@ apiVersion: v2
 appVersion: "24.02-py3"
 description: Triton Inference Server
 name: triton-inference-server
-version: 1.0.1
+version: 1.0.2
