@@ -37,7 +37,7 @@ nfsModelRepository:
   enabled: false
   server: < Replace with the IP Address of your file server >
   path: /srv/models
-  
+
 runtimeClassName: ''
 # add server args here e.g. --grpc-use-ssl, --grpc-server-certs, repository-poll-secs, etc
 serverArgs:
@@ -57,16 +57,3 @@ autoscaling:
 
 serviceMonitor:
   enabled: false
-  rules:
-    custom:
-      - seriesQuery: 'nv_inference_queue_duration_us{namespace="default",pod!=""}'
-        resources:
-          overrides:
-            namespace:
-              resource: "namespace"
-            pod:
-              resource: "pod"
-        name:
-          matches: "nv_inference_queue_duration_us"
-          as: "avg_time_queue_us"
-        metricsQuery: 'avg(delta(nv_inference_queue_duration_us{<<.LabelMatchers>>}[30s])/(1+delta(nv_inference_request_success{<<.LabelMatchers>>}[30s]))) by (<<.GroupBy>>)'

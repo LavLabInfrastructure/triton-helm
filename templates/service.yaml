@@ -51,6 +51,7 @@ spec:
   selector:
     app: {{ template "triton-inference-server.name" . }}
     release: {{ .Release.Name }}
+{{- if .Values.serviceMonitor.enabled }}
 ---
 apiVersion: v1
 kind: Service
@@ -91,3 +92,4 @@ spec:
   endpoints:
   - port: metrics
     interval: 15s
+{{- end }}
