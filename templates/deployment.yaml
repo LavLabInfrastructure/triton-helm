@@ -51,6 +51,9 @@ spec:
         release: {{ .Release.Name }}
 
     spec:
+      {{- if .Values.runtimeClassName }}
+      runtimeClassName: {{ .Values.runtimeClassName }}
+      {{- end }}
       volumes:
         - name: models
           nfs:

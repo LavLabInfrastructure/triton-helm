@@ -34,7 +34,7 @@ image:
   modelRepositoryServer: < Replace with the IP Address of your file server >
   modelRepositoryPath: /srv/models
   numGpus: 1
-
+runtimeClassName: ''
 # add server args here e.g. --grpc-use-ssl, --grpc-server-certs, repository-poll-secs, etc
 serverArgs:
   - '--model-repository=/models'
