@@ -67,9 +67,12 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ default .Chart.AppVersion .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+
+          {{- if .Values.nfsModelRepository.enabled }}
           volumeMounts:
             - mountPath: /models
               name: models
+          {{- end }}
 
           resources:
             limits:
