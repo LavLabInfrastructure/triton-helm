@@ -54,6 +54,7 @@ spec:
       {{- if .Values.runtimeClassName }}
       runtimeClassName: {{ .Values.runtimeClassName }}
       {{- end }}
+
       {{- if .Values.nfsModelRepository.enabled }}
       volumes:
         - name: models
@@ -79,6 +80,9 @@ spec:
             {{- range .Values.serverArgs }}
             - {{ . }}
             {{- end }}
+
+          env: 
+            {{- toYaml .Values.env | nindent 12 }}
 
           ports:
             - containerPort: 8000
