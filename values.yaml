@@ -39,19 +39,6 @@ image:
 serverArgs:
   - '--model-repository=/models'
 
-traefik:
-  ports:
-    triton-http:
-      port: 18000
-      exposedPort: 8000
-      expose: true
-      protocol: TCP
-    triton-grpc:
-      port: 18001
-      exposedPort: 8001
-      expose: true
-      protocol: TCP
-
 autoscaling:
   minReplicas: 1
   maxReplicas: 3
@@ -64,10 +51,8 @@ autoscaling:
           type: AverageValue
           averageValue: 50
 
-prometheus-adapter:
-  prometheus:
-    url: http://example-metrics-kube-prome-prometheus.default.svc.cluster.local
-    port: 9090
+serviceMonitor:
+  enabled: false
   rules:
     custom:
       - seriesQuery: 'nv_inference_queue_duration_us{namespace="default",pod!=""}'
