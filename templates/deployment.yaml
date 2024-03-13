@@ -54,12 +54,14 @@ spec:
       {{- if .Values.runtimeClassName }}
       runtimeClassName: {{ .Values.runtimeClassName }}
       {{- end }}
+      {{- if .Values.nfsModelRepository.enabled }}
       volumes:
         - name: models
           nfs:
-            server: {{ .Values.image.modelRepositoryServer }}
-            path: {{ .Values.image.modelRepositoryPath }}
+            server: {{ .Values.nfsModelRepository.server }}
+            path: {{ .Values.nfsModelRepository.path }}
             readOnly: false
+      {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.imageName }}"
