@@ -30,7 +30,7 @@
 # This autoscaler (and the prometheus adapter) will only be installed in the
 # autoscaling tag is set to true.
 
-{{- if .Values.tags.autoscaling }}
+{{- if .Values.autoscaling.enabled* }}
 apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
