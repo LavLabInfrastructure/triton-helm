@@ -1,3 +1,0 @@
-[submodule "triton-server"]
-	path = triton-server
-	url = https://github.com/triton-inference-server/server.git
