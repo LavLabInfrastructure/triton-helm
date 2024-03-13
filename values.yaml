@@ -27,7 +27,8 @@
 env: []
 
 image:
-  imageName: nvcr.io/nvidia/tritonserver:24.02-py3
+  repository: nvcr.io/nvidia/tritonserver
+  tag: ""
   pullPolicy: IfNotPresent
   numGpus: 1
 
